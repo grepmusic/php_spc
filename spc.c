@@ -90,6 +90,7 @@ void spc_cache_truncate() {
     if(spc_cache_zval) {
         zend_hash_apply(Z_ARRVAL_P(spc_cache_zval), spc_free_zval_str_func TSRMLS_CC);
         zend_hash_clean(Z_ARRVAL_P(spc_cache_zval));
+        pefree(spc_cache_zval, 1);
         spc_cache_zval = NULL;
     }
 }
