@@ -29,14 +29,21 @@ git clone https://github.com/grepmusic/php_spc && cd php_spc && phpize --clean &
 
 So I assume you have installed php_spc successfully, you have temporarily set 'pm.max_children = 1' in your php-fpm.conf and restart php-fpm (kill -USR2 $PHP_FPM_MASTER_PID), then you can test it by the following code:
 
+```php
 <?php
 
 echo 'spc_get("c") = ' . var_export(spc_get("c"), true) . "\n"; // value will be available since the 2nd request
+
 echo "spc_get() = " . var_export(spc_get(), true) . "\n";
+
 spc_set("a", "1");
+
 spc_set("b", "2");
+
 echo 'spc_get("b") = ' . var_export(spc_get("b"), true) . "\n";
+
 spc_set("b", false); // remove key "b" 
+
 echo 'spc_get("b") = ' . var_export(spc_get("b"), true) . "\n";
 spc_set(false, false); // truncate all key-values
 echo "spc_get() (after spc_set(false, false)) = " . var_export(spc_get(), true) . "\n";
@@ -45,8 +52,9 @@ spc_set("d", "4");
 echo "spc_get() = " . var_export(spc_get(), true) . "\n";
 
 ?>
-
-The first time you will get:
+```
+```php
+// The first time you will get:
 spc_get("c") = false
 spc_get() = array (
 )
@@ -58,8 +66,9 @@ spc_get() = array (
   'c' => '3',
   'd' => '4',
 )
-
-The second time you will get:
+```
+```php
+// The second time you will get:
 spc_get("c") = '3'
 spc_get() = array (
   'c' => '3',
@@ -73,6 +82,7 @@ spc_get() = array (
   'c' => '3',
   'd' => '4',
 )
+```
 
 
 The php_spc cache will automatically be cleared ether after php-fpm child process died/respawned/restarted or you manually call spc_set(false, false).
