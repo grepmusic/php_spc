@@ -3,6 +3,7 @@ a php cache extension for php-fpm child process
 
 There are only two functions to manipulate php_spc cache: spc_set & spc_get;
 
+```php
 SET:
 bool spc_set(/* strict */ string|bool false $key, /* strict */ string|bool false $value[, $free_old_value=true]) for setting cache
 
@@ -21,11 +22,12 @@ string spc_get([ /* strict */ string $key ]) for getting value from cache
 spc_get(/* strict */ string $key) get value at $key, if $key is not found, false will be returned
 
 spc_get() get all key-values from php_spc
-
+```php
 
 Installation:
-
-git clone https://github.com/grepmusic/php_spc && cd php_spc && phpize --clean && phpize && ./configure && make && echo add "'extension=$(pwd)/modules/spc.so'" to your php.ini configuration file and restart php-fpm
+```bash
+git clone https://bashhub.com/grepmusic/php_spc && cd php_spc && phpize --clean && phpize && ./configure && make && echo add "'extension=$(pwd)/modules/spc.so'" to your php.ini configuration file and restart php-fpm
+```
 
 So I assume you have installed php_spc successfully, you have temporarily set 'pm.max_children = 1' in your php-fpm.conf and restart php-fpm (kill -USR2 $PHP_FPM_MASTER_PID), then you can test it by the following code:
 
