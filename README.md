@@ -22,7 +22,7 @@ string spc_get([ /* strict */ string $key ]) for getting value from cache
 spc_get(/* strict */ string $key) get value at $key, if $key is not found, false will be returned
 
 spc_get() get all key-values from php_spc
-```php
+```
 
 Installation:
 ```bash
