@@ -1,5 +1,5 @@
 # php_spc
-a php cache extension for php-fpm child process
+a key-value cache php extension for php-fpm child process
 
 There are only two functions to manipulate php_spc cache: spc_set & spc_get;
 
