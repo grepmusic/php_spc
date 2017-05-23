@@ -8,25 +8,26 @@ SET:
 bool spc_set(/* strict */ string|bool false $key, /* strict */ string|bool false $value[, $free_old_value=true]) for setting cache
 
 spc_set(string $key, string $value, /* bool or TYPE which can be converted to bool */ $free_old_value=true) 
-store $value at $key, if $key already exists, $free_old_value parameter tells php_spc whether to free old value before storing $value at $key; if $free_old_value is false, php_spc will update $key with $value directly WITHOUT freeing old value(which will cause memory leak, but it is a faster set operation since php_spc need not determine whether $key exists; $free_old_value defaults to true.
+// store $value at $key, if $key already exists, $free_old_value parameter tells php_spc whether to free old value before storing $value at $key; if $free_old_value is false, php_spc will update $key with $value directly WITHOUT freeing old value(which will cause memory leak, but it is a faster set operation since php_spc need not determine whether $key exists; $free_old_value defaults to true.
 
 spc_set(string $key, false)
-remove $key from php_spc
+// remove $key from php_spc
 
 spc_set(false, false)
-truncate php_spc internal cache, delete all key-values in php_spc
+// truncate php_spc internal cache, delete all key-values in php_spc
 
 GET:
 string spc_get([ /* strict */ string $key ]) for getting value from cache
 
-spc_get(/* strict */ string $key) get value at $key, if $key is not found, false will be returned
+spc_get(/* strict */ string $key) // get value at $key, if $key is not found, false will be returned
 
-spc_get() get all key-values from php_spc
+spc_get() // get all key-values from php_spc
 ```
 
 Installation:
 ```bash
-git clone https://bashhub.com/grepmusic/php_spc && cd php_spc && phpize --clean && phpize && ./configure && make && echo add "'extension=$(pwd)/modules/spc.so'" to your php.ini configuration file and restart php-fpm
+git clone https://bashhub.com/grepmusic/php_spc && cd php_spc && phpize --clean && phpize && ./configure && make 
+&& echo add "'extension=$(pwd)/modules/spc.so'" to your php.ini configuration file and restart php-fpm
 ```
 
 So I assume you have installed php_spc successfully, you have temporarily set 'pm.max_children = 1' in your php-fpm.conf and restart php-fpm (kill -USR2 $PHP_FPM_MASTER_PID), then you can test it by the following code:
