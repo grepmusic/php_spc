@@ -26,7 +26,7 @@ spc_get() // get all key-values from php_spc
 
 Installation:
 ```bash
-git clone https://bashhub.com/grepmusic/php_spc && cd php_spc && phpize --clean && phpize && ./configure && make 
+git clone https://github.com/grepmusic/php_spc && cd php_spc && phpize --clean && phpize && ./configure && make 
 && echo add "'extension=$(pwd)/modules/spc.so'" to your php.ini configuration file and restart php-fpm
 ```
 
